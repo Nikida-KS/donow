@@ -10,7 +10,6 @@ export default class TodoList extends React.Component {
     return (
       <div>
         <h2>To Do List</h2>
-        <div style = {{}}
       </div>
     )
   }
