@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Paper from '@material-ui/core/Paper';
 
 export default class TodoList extends React.Component {
   constructor(props) {
@@ -22,20 +23,24 @@ export default class TodoList extends React.Component {
     this.setState({list: newList, inputValue: ''});
   }
 
-  removeCompleted(e){
-    console.log('write a method to delete me')
+  removeCompleted(index){
+    const newList = this.state.list.slice();
+    newList.splice(index, 1);
+    this.setState({list: newList});
   }
 
   renderList(){
     const mappedList = this.state.list.map((item,  index) => {
-      return <li key = {index}><label><span>{item}</span></label><button onClick={(e) => this.removeCompleted({index})}>x</button></li>})
+      return <Paper elevation={index}  key = {index}><li><label><span>{item}</span></label><button onClick={(e) => this.removeCompleted(index)}>x</button></li></Paper>})
     return mappedList
   }
 
   render (){
     return (
       <div>
-        <h2>Get It Done</h2>
+        <Paper elevation={5}>
+          <h2>Get It Done</h2>
+        </Paper>
         <div>
           <form onSubmit={(e)=> this.handleSubmit(e)}>
             <input
