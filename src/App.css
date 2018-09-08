@@ -2,11 +2,11 @@ body {
   max-width: 600px;
   margin: auto;
   background-color: #a7eae1;
-  font-family: sans-serif;
+  font-family: BioRhyme;
 }
 
 h2 {
-  font-weight: bolder;
+  font-weight: 600;
   font-size: 50px;
   color: #6e73ce;
 }
@@ -50,6 +50,8 @@ button {
   background-color: #a7aae1;
   color: #FFF;
   border: 2px solid #a7eae1;
+  font-family: BioRhyme;
+  font-weight: 300;
 }
 
 button:hover {
@@ -76,6 +78,7 @@ li {
 
 li>button{
   background: none;
+  color: #333;
   padding: 0;
   border: 0;
 }

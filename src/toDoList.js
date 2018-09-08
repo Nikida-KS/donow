@@ -12,6 +12,12 @@ export default class TodoList extends React.Component {
     };
   }
 
+  componentDidMount(){
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then(response => response.json())
+      .then(data => this.setState({list:data}))
+  }
+
   handleChange(e){
     this.setState({inputValue: e.target.value})
   }
@@ -19,7 +25,13 @@ export default class TodoList extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     const newList = this.state.list.slice();
-    newList.push(this.state.inputValue);
+    const newItemObj ={
+      userId: 1,
+      id: newList.length,
+      title: this.state.inputValue,
+      completed: false,
+    }
+    newList.push(newItemObj);
     this.setState({list: newList, inputValue: ''});
   }
 
@@ -31,7 +43,7 @@ export default class TodoList extends React.Component {
 
   renderList(){
     const mappedList = this.state.list.map((item,  index) => {
-      return <Paper elevation={index}  key = {index}><li><label><span>{item}</span></label><button onClick={(e) => this.removeCompleted(index)}>x</button></li></Paper>})
+      return <Paper elevation={5}  key = {index}><li><label><span>{item.title}</span></label><button onClick={(e) => this.removeCompleted(index)}>x</button></li></Paper>})
     return mappedList
   }
 
